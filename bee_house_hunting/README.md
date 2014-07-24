@@ -1,4 +1,4 @@
-Shiny
+Nest hunting in the honeybee
 =====
 
-A set of R/Shiny webapps that I develop for teaching purposes
+This app features a model of honeybee nest hunting. More on that later. 
