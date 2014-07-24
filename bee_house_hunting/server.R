@@ -2,6 +2,7 @@
 library(shiny)
 library(deSolve)
 library(ggplot2)
+library(grid)
 
 
 # ODE function
@@ -44,11 +45,14 @@ shinyServer(function(input, output) {
     
     g <- ggplot(data = out,
                 aes(x = time)) + 
-      geom_path(aes(y = nest1), size = 1, color = "red") + 
-      geom_path(aes(y = nest2), size = 1, color = "blue") +
-      geom_path(aes(y = nest3), size = 1, color = "green") +
+      geom_path(aes(y = nest1, color = "Nest 1  "), size = 1) + 
+      geom_path(aes(y = nest2, color = "Nest 2  "), size = 1) +
+      geom_path(aes(y = nest3, color = "Nest 3  "), size = 1) +
       geom_hline(yintercept = input$quorum, size = 1, linetype = 2) +
-      theme_minimal(base_size = 14)
+      theme_minimal(base_size = 18) + 
+      theme(legend.position = "top", legend.title=element_blank()) +
+      xlab("Time") + ylab("Number of committed scouts") +
+      scale_color_manual(values = c("red", "green", "blue"))
     
     print(g)
   })
