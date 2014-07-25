@@ -76,7 +76,7 @@ shinyUI(fluidPage(
                                   href = "https://twitter.com/sjmgarnier",
                                   target = "_blank")),
           
-          p(strong("Website:"), a("www.theswarmlab.com", 
+          p(strong("Website:"), a("http://www.theswarmlab.com", 
                                   href = "http://www.theswarmlab.com",
                                   target = "_blank")),
           
@@ -91,7 +91,7 @@ shinyUI(fluidPage(
               target = "_blank"), 
             " and ",
             a("Shiny.",
-              href = "shiny.rstudio.com",
+              href = "http://shiny.rstudio.com",
               target = "_blank")),
           
           p(strong("License:"), 
