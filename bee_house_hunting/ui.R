@@ -1,6 +1,8 @@
 library(shiny)
 
 shinyUI(fluidPage(
+  # CSS theme
+  theme = "bootstrap.css",
   
   # Application title
   titlePanel("Collective nest-selection in honeybees"),
