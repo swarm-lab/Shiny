@@ -10,6 +10,8 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for number of bins
   sidebarLayout(
     sidebarPanel(
+      width = 3,
+      
       sliderInput("duration", "Duration of the trial:",
                   min = 1, max = 200, value = 200, width = "100%"),
       sliderInput("scouts", "Number of scouts:",
