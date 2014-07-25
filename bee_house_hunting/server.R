@@ -52,7 +52,7 @@ shinyServer(function(input, output) {
       theme_minimal(base_size = 18) + 
       theme(legend.position = "top", legend.title=element_blank()) +
       xlab("Time") + ylab("Number of committed scouts") +
-      scale_color_manual(values = c("red", "green", "blue"))
+      scale_color_manual(values = c("tomato3", "palegreen3", "dodgerblue3"))
     
     print(g)
   })
