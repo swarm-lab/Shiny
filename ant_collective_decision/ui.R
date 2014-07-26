@@ -47,7 +47,7 @@ shinyUI(
                      wellPanel(
                        h5("Source #2"),
                        sliderInput('l2', 'Distance:', 
-                                   min=0, max=100, value=20, step=1, width = "100%"),
+                                   min=0, max=100, value=25, step=1, width = "100%"),
                        sliderInput('q2', 'Quality:', 
                                    min=0, max=2, value=1, step=0.01, width = "100%"),
                        sliderInput('k2', 'Light intensity:', 
@@ -75,7 +75,7 @@ shinyUI(
             
             p(strong("Source code:"), 
               a("GitHub",
-                href = "https://github.com/morpionZ/Shiny/tree/master/bee_house_hunting",
+                href = "https://github.com/morpionZ/Shiny/tree/master/ant_collective_decision",
                 target = "_blank")),
             
             p(strong("Created with:"), 
@@ -98,13 +98,18 @@ shinyUI(
             
             p(HTML('<ol>'),
               
-              HTML('<li>'), "Seeley TD, Visscher PK, Schlegel T, Hogan PM, Franks NR, et al. (2012) Stop signals provide cross inhibition in collective decision-making by honeybee swarms. Science (80- ) 335: 108–111.", 
-              a("doi:10.1126/science.1210361.",
-                href = "http://www.sciencemag.org/content/335/6064/108.full",
+              HTML('<li>'), "Goss S, Aron S, Deneubourg JL, Pasteels JM (1989) Self-organized shortcuts in the Argentine ant. Naturwissenschaften 76: 579–581.", 
+              a("doi:10.1007/BF00462870.",
+                href = "http://link.springer.com/article/10.1007%2FBF00462870",
                 target = "_blank"),
               
-              HTML('<li>'), "Pais D, Hogan PM, Schlegel T, Franks NR, Leonard NE, et al. (2013) A Mechanism for Value-Sensitive Decision-Making. PLoS One 8: e73216.", 
-              a("doi:10.1371/journal.pone.0073216.",
+              HTML('<li>'), "Beckers R, Deneubourg J, Goss S, Pasteels JM (1990) Collective decision making through food recruitment. Insectes Soc 37: 258–267.", 
+              a("doi:10.1007/BF02224053.",
+                href = "http://link.springer.com/article/10.1007%2FBF02224053",
+                target = "_blank"),
+              
+              HTML('<li>'), "Dussutour A, Deneubourg J-L, Fourcassié V (2005) Amplification of individual preferences in a social context: the case of wall-following in ants. Proc Biol Sci 272: 705–714.", 
+              a("doi:10.1098/rspb.2004.2990.",
                 href = "http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0073216",
                 target = "_blank"),
               
