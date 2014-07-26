@@ -26,6 +26,8 @@ shinyUI(
       # Main panel
       mainPanel(
         tabsetPanel(
+          
+          # Model panel
           tabPanel(
             title = "Model",
             
@@ -66,6 +68,8 @@ shinyUI(
               )
             )
           ),
+          
+          # About panel
           tabPanel(
             title = "About",
             
