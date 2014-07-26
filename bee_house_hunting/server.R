@@ -31,7 +31,7 @@ ode_sys <- function(t, y, parms) {
 # Shiny server call
 shinyServer(function(input, output) {
   
-  output$distPlot <- renderPlot({
+  output$ODE.plot <- renderPlot({
     parms <- list(gamma = c(input$gamma1, input$gamma2, input$gamma3),  # discovery rate
                   alpha = c(input$alpha1, input$alpha2, input$alpha3),  # spontaneous uncommitment 
                   rho = c(input$rho1, input$rho2, input$rho3),          # recruitment rate 
