@@ -110,12 +110,12 @@ shinyUI(
             
             p(HTML('<ol>'),
               
-              HTML('<li>'), "Seeley TD, Visscher PK, Schlegel T, Hogan PM, Franks NR, et al. (2012) Stop signals provide cross inhibition in collective decision-making by honeybee swarms. Science (80- ) 335: 108–111.", 
+              HTML('<li>'), "Seeley TD, Visscher PK, Schlegel T, Hogan PM, Franks NR, Marshall JAR (2012) Stop signals provide cross inhibition in collective decision-making by honeybee swarms. Science 335: 108–111.", 
               a("doi:10.1126/science.1210361.",
                 href = "http://www.sciencemag.org/content/335/6064/108.full",
                 target = "_blank"),
               
-              HTML('<li>'), "Pais D, Hogan PM, Schlegel T, Franks NR, Leonard NE, et al. (2013) A Mechanism for Value-Sensitive Decision-Making. PLoS One 8: e73216.", 
+              HTML('<li>'), "Pais D, Hogan PM, Schlegel T, Franks NR, Leonard NE, Marshall JAR (2013) A Mechanism for Value-Sensitive Decision-Making. PLoS One 8: e73216.", 
               a("doi:10.1371/journal.pone.0073216.",
                 href = "http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0073216",
                 target = "_blank"),
