@@ -5,6 +5,7 @@ A set of [R/Shiny](http://shiny.rstudio.com/) webapps that I develop for
 teaching purposes. 
 
 Currently available apps:
+
 1. Collective food source selection in ants: 
   + Source code: [https://github.com/sjmgarnier/Shiny/tree/master/ant_collective_decision](https://github.com/sjmgarnier/Shiny/tree/master/ant_collective_decision)
   + App: [http://sjmgarnier.shinyapps.io/ant_collective_decision/](http://sjmgarnier.shinyapps.io/ant_collective_decision/)
