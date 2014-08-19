@@ -19,7 +19,7 @@ shinyUI(
                     min = 1, max = 200, value = 100, width = "100%"),
         sliderInput("quorum", "Quorum number:",
                     min = 1, max = 200, value = 25, width = "100%"),
-        sliderInput("theta", "Time to introduce the 3rd nest:",
+        sliderInput("theta", "Time to introduce a 3rd nest:",
                     min = 1, max = 200, value = 100, width = "100%")
       ),
       
@@ -41,7 +41,7 @@ shinyUI(
                                            min = 0, max = 10, value = 1, step = 0.1),
                                sliderInput("rho1", "Recruitment rate:",
                                            min = 0, max = 10, value = 2, step = 0.1),
-                               sliderInput("sigma1", "Conversion rate:",
+                               sliderInput("sigma1", "Deconversion rate:",
                                            min = 0, max = 10, value = 2, step = 0.1))
               ),
               column(4,
@@ -52,7 +52,7 @@ shinyUI(
                                            min = 0, max = 10, value = 1.5, step = 0.1),
                                sliderInput("rho2", "Recruitment rate:",
                                            min = 0, max = 10, value = 2, step = 0.1),
-                               sliderInput("sigma2", "Conversion rate:",
+                               sliderInput("sigma2", "Deconversion rate:",
                                            min = 0, max = 10, value = 2, step = 0.1))
               ),
               column(4,
@@ -63,7 +63,7 @@ shinyUI(
                                            min = 0, max = 10, value = 1, step = 0.1),
                                sliderInput("rho3", "Recruitment rate:",
                                            min = 0, max = 10, value = 2, step = 0.1),
-                               sliderInput("sigma3", "Conversion rate:",
+                               sliderInput("sigma3", "Deconversion rate:",
                                            min = 0, max = 10, value = 2, step = 0.1))
               )
             )
