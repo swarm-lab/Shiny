@@ -7,31 +7,36 @@ source("ibm.R")
 shinyServer(function(input, output, session) {  
   
   dat <- reactiveValues(tab = NULL)
+  counter <- reactiveValues(count = -1)
   
   observe({
-    withProgress(session, {
-      n <- 1000
+    if (counter$count != input$goButton) {
+      counter$count <- input$goButton
       
-      setProgress(message = paste0("Simulating ", n, " experiments"),
-                  detail = 'Please wait...')
-                  
-      m1 <- replicate(n, woc(n = input$n, 
-                                val = input$val,
-                                error = input$error,
-                                soc = 0))
-      
-      m2 <- replicate(n, woc(n = input$n, 
-                                val = input$val,
-                                error = input$error,
-                                soc = input$soc))
-      
-      dat$tab <- data.frame(SOC = as.factor(rep(c("Control   ", "Experimental   "), each = n * 2)),
-                            TYPE = rep(c("mean", "sd", "mean", "sd"), each = n),
-                            VAL = c(apply(m1, 2, mean),
-                                    apply(m1, 2, sd),
-                                    apply(m2, 2, mean),
-                                    apply(m2, 2, sd)))
-    })
+      withProgress(session, {
+        n <- 1000
+        
+        setProgress(message = paste0("Simulating ", n, " experiments"),
+                    detail = 'Please wait...')
+        
+        m1 <- replicate(n, woc(n = input$n, 
+                               val = input$val,
+                               error = input$error,
+                               soc = 0))
+        
+        m2 <- replicate(n, woc(n = input$n, 
+                               val = input$val,
+                               error = input$error,
+                               soc = input$soc))
+        
+        dat$tab <- data.frame(SOC = as.factor(rep(c("Control   ", "Experimental   "), each = n * 2)),
+                              TYPE = rep(c("mean", "sd", "mean", "sd"), each = n),
+                              VAL = c(apply(m1, 2, mean),
+                                      apply(m1, 2, sd),
+                                      apply(m2, 2, mean),
+                                      apply(m2, 2, sd)))
+      }) 
+    }
   })
   
   output$IBM.plot1 <- renderPlot({

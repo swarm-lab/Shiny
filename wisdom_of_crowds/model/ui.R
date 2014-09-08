@@ -18,16 +18,21 @@ shinyUI(
         width = 3, 
         
         sliderInput("n", "Number of tested people", 
-                    min = 1, max = 1000, value = 100, width = "100%"),
+                    min = 1, max = 1000, value = 100, width = "100%"), hr(),
         
         sliderInput("val", "Number of gumballs in the jar", 
-                    min = 1, max = 1000,value = 200, width = "100%"),
+                    min = 1, max = 1000,value = 200, width = "100%"), hr(),
         
         sliderInput("error", "% error of individual estimates", 
-                    min = 0, max = 1, value = 0.2, width = "100%"),
+                    min = 0, max = 1, value = 0.2, width = "100%"), hr(),
         
         sliderInput("soc", "Intensity of social influence", 
-                    min = 0, max = 1, value = 0, width = "100%")
+                    min = 0, max = 1, value = 0, width = "100%"), hr(),
+        
+        div(style = "text-align: center;",
+            actionButton("goButton", "Rerun", icon = icon("refresh"))
+        )
+        
       ),
       
       # Main panel
