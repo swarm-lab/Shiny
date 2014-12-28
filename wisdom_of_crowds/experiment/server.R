@@ -1,6 +1,5 @@
 library(shiny)
 library(shinyBS)
-library(shinyFiles)
 library(ggplot2)
 
 shinyServer(function(input, output, session) {

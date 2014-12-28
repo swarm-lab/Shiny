@@ -1,5 +1,4 @@
 if (!require("shinyBS")) install.packages("shinyBS")
-if (!require("shinyFiles")) install.packages("shinyFiles")
 
 bsCollapsePanelNoHead <- function (title, ..., id = NULL, value = NULL) {
   content <- list(...)

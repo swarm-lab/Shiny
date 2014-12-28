@@ -1,7 +1,6 @@
 source("setup.R")
 library(shiny)
 library(shinyBS)
-library(shinyFiles)
 source("panel1.R")
 source("panel2.R")
 source("panel3.R")
