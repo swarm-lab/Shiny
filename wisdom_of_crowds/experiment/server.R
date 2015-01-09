@@ -1,6 +1,6 @@
 library(shiny)
-library(shinyBS)
 library(ggplot2)
+library(sendmailR)
 
 shinyServer(function(input, output, session) {
   
@@ -21,8 +21,10 @@ shinyServer(function(input, output, session) {
   
   output$plot_title <- renderUI({
     if (runif(1) > 0.5) {
+      type <<- "naive"
       h4("Count the number of dots in the image below")
     } else {
+      type <<- "informed"
       list(h4("Count the number of dots in the image below"),
            h5(paste("Average estimate from previous users =", 
                     signif(162 + rnorm(1, sd = 3), 4))))
@@ -59,7 +61,7 @@ shinyServer(function(input, output, session) {
     if (input$submit_button > 0){
       updateCollapse(session, id = "collapse1", multiple = TRUE, open = "col5", close = "col4")
       filename <- paste0("data/", Sys.time(), "-", round(runif(1, min = 0, max = 10^9)), ".csv")
-      dat <- data.frame(count = input$count, conf = input$conf)
+      dat <- data.frame(type = type, count = input$count, conf = input$conf)
       write.csv(dat, filename, row.names = FALSE)
     }
   })

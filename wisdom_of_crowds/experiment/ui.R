@@ -1,11 +1,5 @@
-source("setup.R")
 library(shiny)
 library(shinyBS)
-source("panel1.R")
-source("panel2.R")
-source("panel3.R")
-source("panel4.R")
-source("panel5.R")
 
 shinyUI(
   bootstrapPage(
