@@ -10,3 +10,4 @@
 *.dcf
 /.project
 wisdom_of_crowds/experiment/data
+mysql.cfg

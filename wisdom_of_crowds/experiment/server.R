@@ -1,6 +1,6 @@
 library(shiny)
 library(ggplot2)
-library(sendmailR)
+library(RMySQL)
 
 shinyServer(function(input, output, session) {
   
@@ -60,9 +60,10 @@ shinyServer(function(input, output, session) {
   observe({
     if (input$submit_button > 0){
       updateCollapse(session, id = "collapse1", multiple = TRUE, open = "col5", close = "col4")
-      filename <- paste0("data/", Sys.time(), "-", round(runif(1, min = 0, max = 10^9)), ".csv")
-      dat <- data.frame(type = type, count = input$count, conf = input$conf)
-      write.csv(dat, filename, row.names = FALSE)
+      con <- dbConnect(MySQL(), default.file = normalizePath("mysql.cfg"))
+      dbWriteTable(conn = con, name = "woc", append = TRUE,
+                   value = data.frame(type = type, count = input$count, conf = input$conf))
+      dbDisconnect(con)
     }
   })
   
