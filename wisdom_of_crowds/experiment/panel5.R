@@ -24,7 +24,7 @@ panel5 <- bsCollapsePanelNoHead(
       
       p(class = "divider"),
       
-      p("This app was created using", a("RStudio", href = "http://www.rstudio.com/", target = "_blank"), " and the", a("Shiny library.", href = "http://www.rstudio.com/shiny/", target = "_blank"), "The source code is avalaible on ", a("GitHub.", href = "https://github.com/morpionZ/Teaching/tree/master/Wisdom%20of%20crowds/experiment", target = "_blank"))
+      p("This app was created using", a("RStudio", href = "http://www.rstudio.com/", target = "_blank"), " and the", a("Shiny library.", href = "http://www.rstudio.com/shiny/", target = "_blank"), "The source code is avalaible on ", a("GitHub.", href = "https://github.com/swarm-lab/Shiny/tree/master/wisdom_of_crowds/experiment", target = "_blank"))
       
   )
 )
