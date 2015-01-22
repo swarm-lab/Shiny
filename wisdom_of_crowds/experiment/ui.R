@@ -1,7 +1,7 @@
 library(shiny)
 library(shinyBS)
 
-shinyUI(
+shinybootstrap2::withBootstrap2(
   bootstrapPage(
     
     tags$head(

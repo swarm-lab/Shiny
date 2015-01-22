@@ -2,7 +2,7 @@ library(shiny)
 library(ggplot2)
 library(RMySQL)
 
-shinyServer(function(input, output, session) {
+shinybootstrap2::withBootstrap2(function(input, output, session) {
   
   react <- reactiveValues(count = 0)
   
