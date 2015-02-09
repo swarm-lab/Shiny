@@ -63,7 +63,7 @@ shinyUI(
             
             p(strong("Source code:"), 
               a("GitHub",
-                href = "https://github.com/morpionZ/Shiny/tree/master/wisdom_of_crowds/model",
+                href = "https://github.com/swarm-lab/Shiny/tree/master/aggregation_segregation",
                 target = "_blank")),
             
             p(strong("Created with:"), 
@@ -80,23 +80,23 @@ shinyUI(
                 href = "http://www.gnu.org/copyleft/gpl.html",
                 target = "_blank")),
             
-            tags$hr(),
-            
-            h4("References:"),
-            
-            p(HTML('<ol>'),
-              
-              HTML('<li>'), "Lorenz J, Rauhut H, Schweitzer F, Helbing D (2011) How social influence can undermine the wisdom of crowd effect. Proc Natl Acad Sci USA 108: 9020–9025.", 
-              a("doi:10.1073/pnas.1008636108.",
-                href = "http://www.pnas.org/content/108/22/9020",
-                target = "_blank"),
-              
-              HTML('<li>'), "Moussaïd M, Kämmer JE, Analytis PP, Neth H (2013) Social influence and the collective dynamics of opinion formation. PLoS One 8: e78433.", 
-              a("doi:10.1371/journal.pone.0078433.",
-                href = "http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0078433",
-                target = "_blank"),
-              
-              HTML('</ol>'))
+            tags$hr()#,
+            #             
+            #             h4("References:"),
+            #             
+            #             p(HTML('<ol>'),
+            #               
+            #               HTML('<li>'), "Lorenz J, Rauhut H, Schweitzer F, Helbing D (2011) How social influence can undermine the wisdom of crowd effect. Proc Natl Acad Sci USA 108: 9020–9025.", 
+            #               a("doi:10.1073/pnas.1008636108.",
+            #                 href = "http://www.pnas.org/content/108/22/9020",
+            #                 target = "_blank"),
+            #               
+            #               HTML('<li>'), "Moussaïd M, Kämmer JE, Analytis PP, Neth H (2013) Social influence and the collective dynamics of opinion formation. PLoS One 8: e78433.", 
+            #               a("doi:10.1371/journal.pone.0078433.",
+            #                 href = "http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0078433",
+            #                 target = "_blank"),
+            #               
+            #               HTML('</ol>'))
           )
         )
       )
