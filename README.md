@@ -1,7 +1,5 @@
 # Shiny
 
----
-
 This repository contains several [R/Shiny](http://shiny.rstudio.com/) webapps 
 that the SwarmLab develops for teaching purposes (mostly).  
 
