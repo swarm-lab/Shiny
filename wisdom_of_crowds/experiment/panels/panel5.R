@@ -1,9 +1,11 @@
 panel5 <- bsCollapsePanelNoHead(
-  title = "NULL", id = "col5",
+  title = "NULL", id = "col5", value = "col5",
   
   div(class = "collapse_panel",
       
       h3("Thank you!"), 
+      
+      tags$hr(),
       
       p("Your results have been successfully recorded. Thank you very much for your participation!"),
       
@@ -16,7 +18,7 @@ panel5 <- bsCollapsePanelNoHead(
   
   div(class = "button",
       
-      HTML("<iframe width='640' height='480' align='center' src='//www.youtube.com/embed/iOucwX7Z1HU' frameborder='0' allowfullscreen></iframe>")
+      HTML("<iframe width='640' height='480' align='center' src='https://www.youtube.com/embed/iOucwX7Z1HU' frameborder='0' allowfullscreen></iframe>")
       
   ),
   

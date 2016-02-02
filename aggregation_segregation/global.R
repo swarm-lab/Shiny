@@ -59,8 +59,3 @@ agg_seg_model <- function(n = 300, t = 100, affin_same = 1, affin_diff = -1) {
   saved_loc
 }
 
-
-
-
-
-

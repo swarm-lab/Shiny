@@ -1,9 +1,11 @@
 panel2 <- bsCollapsePanelNoHead(
-  title = "NULL", id = "col2",
+  title = "NULL", id = "col2", value = "col2",
   
   div(class = "collapse_panel", 
       
       h3("Instructions"), 
+      
+      tags$hr(),
       
       p("The instructions are very simple. Once you are done reading them, click the button at the bottom of the page. A picture will be displayed that contains multiple dots distributed randomly and sometimes overlapping. The picture will remain on the screen for 10 seconds. During this time, try to count how many dots are in the picture."),
       
@@ -20,6 +22,6 @@ panel2 <- bsCollapsePanelNoHead(
   ),
   
   div(class = "button",
-      bsActionButton("ready_button", "Ready!") 
+      actionButton("ready_button", "Ready!") 
   )
 )

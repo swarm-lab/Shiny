@@ -53,12 +53,4 @@ shinyServer(function(input, output, session) {
       theme_minimal(base_size = 18) +
       theme(legend.justification = c(1, 1), legend.position = c(1, 1))
   })
-  
-  output$timeline <- renderUI({
-    sliderInput("time", "Timeline (move cursor or click on play button)", 
-                min = 0, max = 100, value = 0, width = "100%",
-                animate = animationOptions(interval = 500, loop = FALSE,
-                                           playButton = tag("span", list(class = "glyphicon glyphicon-play")),
-                                           pauseButton = tag("span", list(class = "glyphicon glyphicon-pause"))))
-  })
 })

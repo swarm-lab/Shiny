@@ -2,9 +2,6 @@
 library(shiny)
 library(deSolve)
 library(ggplot2)
-library(grid)
-source("ode.R")
-
 
 # Shiny server call
 shinyServer(function(input, output) {

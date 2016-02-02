@@ -1,0 +1,169 @@
+---
+title: "Wisdom of crowds - Experimental results"
+author: "Simon Garnier"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    css: custom.css
+    fig_caption: true
+    fig_width: 8
+    number_sections: true
+    theme: cosmo
+    toc: true
+    csl: plos.csl
+    bibliography: library.bib
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(ggplot2)
+library(RMySQL)
+library(dplyr)
+library(RColorBrewer)
+
+cbf <- brewer.pal(8, "Dark2")
+```
+
+--- 
+
+# Open connection to database
+
+```{r, 'con', warning=FALSE}
+con <- dbConnect(MySQL(), default.file = normalizePath("../mysql.cfg"))
+dat <- dbReadTable(conn = con, name = "woc") %>%
+  mutate(type = factor(type, levels = c("naive", "informed")))
+
+dat <- mutate(dat, error = abs(count - 123))
+```
+
+[Back to top]("#")
+
+---
+
+# Estimates distribution (naive)
+
+```{r, 'figure_1', message=FALSE, dpi=300}
+mean_naive <- mean(filter(dat, type == "naive")$count)
+median_naive <- median(filter(dat, type == "naive")$count)
+
+ggplot(filter(dat, type == "naive"), aes(x = count)) +
+  geom_histogram(aes(y = ..density..), fill = cbf[8], alpha = 0.5, 
+                 binwidth = diff(range(dat$count)) / 15) + 
+  geom_density(size = 1) + 
+  geom_vline(xintercept = 123, linetype = 2, size = 1) + 
+  geom_vline(xintercept = mean_naive, color = cbf[2], size = 1) + 
+  #geom_vline(xintercept = median_naive, color = cbf[3], size = 1) + 
+  theme_minimal(base_size = 14) + 
+  guides(fill = FALSE) + 
+  xlab("Estimate") + ylab("Density") +
+  xlim(range(dat$count))
+```
+<p class="caption">**Figure 1:** Figure caption.</p>
+
+[Back to top]("#")
+
+---
+
+# Estimates' error distribution (naive)
+
+```{r, 'figure_2', message=FALSE, dpi=300}
+ggplot(filter(dat, type == "naive"), aes(x = error)) +
+  geom_histogram(aes(y = ..density..), fill = cbf[8], alpha = 0.5, 
+                 binwidth = diff(range(dat$error)) / 15) + 
+  geom_density(size = 1) + 
+  geom_vline(xintercept = abs(mean_naive - 123), color = cbf[2], size = 1) + 
+  #geom_vline(xintercept = abs(median_naive - 123), color = cbf[3], size = 1) +
+  theme_minimal(base_size = 14) + 
+  guides(fill = FALSE) + 
+  xlab("Error") + ylab("Density")
+```
+<p class="caption">**Figure 2:** Figure caption.</p>
+
+Average estimate is better than `r 100 * sum(abs(mean_naive - 123) <= filter(dat, type == "naive")$error) / length(filter(dat, type == "naive")$count)` percent of the individual estimates. 
+
+[Back to top]("#")
+
+---
+
+# Confidence vs error
+
+```{r, 'figure_3', message=FALSE, dpi=300}
+ggplot(filter(dat, type == "naive"), aes(x = conf, y = error)) +
+  geom_point() + 
+  geom_smooth(size = 1, method = "lm", color = cbf[3]) + 
+  theme_minimal(base_size = 14) + 
+  guides(fill = FALSE) + 
+  xlim(0, 10) +
+  xlab("Confidence") + ylab("Error")
+```
+<p class="caption">**Figure 3:** Figure caption.</p>
+
+[Back to top]("#")
+
+---
+
+# Estimates distribution (informed)
+
+```{r, 'figure_4', message=FALSE, dpi=300}
+mean_informed <- mean(filter(dat, type == "informed")$count)
+median_informed <- median(filter(dat, type == "informed")$count)
+
+ggplot(filter(dat, type == "informed"), aes(x = count)) +
+  geom_histogram(aes(y = ..density..), fill = cbf[8], alpha = 0.5, 
+                 binwidth = diff(range(dat$count)) / 15) + 
+  geom_density(size = 1) + 
+  geom_vline(xintercept = 123, linetype = 2, size = 1) + 
+  geom_vline(xintercept = 162, linetype = 3, size = 1) + 
+  geom_vline(xintercept = mean_informed, color = cbf[2], size = 1) + 
+  #geom_vline(xintercept = median_informed, color = cbf[3], size = 1) + 
+  theme_minimal(base_size = 14) + 
+  guides(fill = FALSE) + 
+  xlab("Estimate") + ylab("Density") + 
+  xlim(range(dat$count))
+```
+<p class="caption">**Figure 4:** Figure caption.</p>
+
+[Back to top]("#")
+
+---
+
+# Estimates' error distribution (informed)
+
+```{r, 'figure_5', message=FALSE, dpi=300}
+ggplot(filter(dat, type == "informed"), aes(x = error)) +
+  geom_histogram(aes(y = ..density..), fill = cbf[8], alpha = 0.5, binwidth = diff(range(dat$error)) / 15) + 
+  geom_density(size = 1) + 
+  geom_vline(xintercept = abs(mean_informed - 123), color = cbf[2], size = 1) + 
+  #geom_vline(xintercept = abs(median_informed - 123), color = cbf[3], size = 1) +
+  theme_minimal(base_size = 14) + 
+  guides(fill = FALSE) + 
+  xlab("Error") + ylab("Density")
+```
+<p class="caption">**Figure 5:** Figure caption.</p>
+
+Average estimate is better than `r 100 * sum(abs(mean_informed - 123) <= filter(dat, type == "informed")$error) / length(filter(dat, type == "informed")$count)` percent of the individual estimates. 
+
+[Back to top]("#")
+
+---
+
+# Confidence vs error
+
+```{r, 'figure_6', message=FALSE, dpi=300}
+ggplot(filter(dat, type == "informed"), aes(x = conf, y = error)) +
+  geom_point() + 
+  geom_smooth(size = 1, method = "lm", color = cbf[3]) + 
+  theme_minimal(base_size = 14) + 
+  guides(fill = FALSE) + 
+  xlim(0, 10) +
+  xlab("Confidence") + ylab("Error")
+```
+<p class="caption">**Figure 6:** Figure caption.</p>
+
+[Back to top]("#")
+
+---
+
+````{r, 'decon', echo=FALSE}
+trash <- dbDisconnect(con)
+```
+

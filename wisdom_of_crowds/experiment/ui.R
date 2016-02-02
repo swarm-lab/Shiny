@@ -1,21 +1,21 @@
-library(shiny)
-library(shinyBS)
-
-shinybootstrap2::withBootstrap2(
-  bootstrapPage(
+shinyUI(
+  navbarPage(
+    title = "NJIT BIOL 337",
+    theme = "bootstrap.css",
+    fluid = FALSE,
+    collapsible = TRUE,
     
-    tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
+    tabPanel("-",
+             bsCollapse(panel1, panel2, panel3, panel4, panel5,
+                        multiple = TRUE, id = "collapse1", open = "col1")
     ),
     
-    bsNavBar("nav", brand = "NJIT - BIOL 337", fixed = FALSE),
-    
-    bsCollapse(multiple = TRUE, id = "collapse1", open = "col1",
-               panel1,
-               panel2,
-               panel3,
-               panel4,
-               panel5
-    )
+    tabPanel(tagList(tags$html("Powered by"),
+                     tags$img(src = "white-rstudio-logo.png",
+                              height = "20")),
+             value = "RStudio",
+             tags$head(tags$script(src = "actions.js"))
+    )    
   )
 )
+

@@ -1,0 +1,6 @@
+base
+rmarkdown
+ggplot2
+DBI
+RMySQL
+dplyr

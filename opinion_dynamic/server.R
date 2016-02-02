@@ -1,10 +1,10 @@
 library(shiny)
 library(simecol)
-library(dplyr)
 library(ggplot2)
-library(gridExtra)
 library(scales)
-source("grid_sys.R")
+library(dplyr)
+library(grid)
+library(gridExtra)
 
 shinyServer(function(input, output, session) {  
   data <- reactiveValues()
@@ -15,12 +15,8 @@ shinyServer(function(input, output, session) {
     mat <- matrix(0, nrow = 25, ncol = 25)
     mat[sample(1:(25 * 25), 2, FALSE)] <- c(1, -1)
     
-    m1 <- gridModel(main = grid_sys,
-                    parms = list(w1 = input$w1, 
-                                 w2 = input$w2),
-                    times = 0:input$max.time,
-                    init = mat,
-                    solver = "iteration")
+    m1 <- new("gridModel", main = grid_sys, parms = list(w1 = input$w1, w2 = input$w2),
+              times = 0:input$max.time, init = mat, solver = "iteration")
     
     data$steps <- out(sim(m1))
     
@@ -38,6 +34,7 @@ shinyServer(function(input, output, session) {
   })
   
   output$plot <- renderPlot({
+    print(input$time)
     tiles <- data.frame(expand.grid(x = 1:25, y = 1:25),
                         z = as.vector(data$steps[[input$time + 1]]))
     tiles$z <- factor(sign(tiles$z), levels = as.character(-1:1))
@@ -73,13 +70,13 @@ shinyServer(function(input, output, session) {
       geom_line(data = data$summary,
                 aes(x = time, y = s2), 
                 color = alpha("dodgerblue", 0.25), size = 1) +
-      geom_line(data = filter(data$summary, time <= input$time + 1),
+      geom_line(data = filter(data$summary, time <= (input$time + 1)),
                 aes(x = time, y = 25 * 25 - s1 - s2, color = "Uncommitted"), 
                 size = 1) +
-      geom_line(data = filter(data$summary, time <= input$time + 1),
+      geom_line(data = filter(data$summary, time <= (input$time + 1)),
                 aes(x = time, y = s1, color = "Opinion 1    "), 
                 size = 1) + 
-      geom_line(data = filter(data$summary, time <= input$time + 1),
+      geom_line(data = filter(data$summary, time <= (input$time + 1)),
                 aes(x = time, y = s2, color = "Opinion 2    "), 
                 size = 1) +  
       geom_vline(xintercept = input$time, color = "grey") +
