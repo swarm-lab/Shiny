@@ -32,7 +32,8 @@ con <- dbConnect(MySQL(), default.file = normalizePath("../mysql.cfg"))
 dat <- dbReadTable(conn = con, name = "woc") %>%
   mutate(type = factor(type, levels = c("naive", "informed")))
 
-dat <- mutate(dat, error = abs(count - 123))
+dat <- mutate(dat, error = abs(count - 123)) %>%
+  filter(count < 500)
 ```
 
 [Back to top]("#")
