@@ -144,7 +144,7 @@ shinyUI(
                
                p(strong("Source code:"), 
                  a("GitHub",
-                   href = "https://github.com/swarm-lab/teachR/tree/master/inst/apps/aggregation_segregation",
+                   href = "https://github.com/swarm-lab/Shiny/tree/master/wisdom_of_crowds/model",
                    target = "_blank")),
                
                p(strong("Created with:"), 
